@@ -4,11 +4,12 @@ package com.example.repositories;
 import com.example.entities.BoardData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface BoardDataRepository extends JpaRepository<BoardData, Long> {
+public interface BoardDataRepository extends JpaRepository<BoardData, Long>, QuerydslPredicateExecutor<BoardData> {
 
     List<BoardData> findBySubject(String subject);
     // 쿼리 메서드의 네이밍룰  = find + (엔티티명) + By + 변수이름 (엔티티명은 생략 가능)
