@@ -21,6 +21,10 @@ public class BoardData {
     @Column(columnDefinition = "NUMBER(4) NOT NULL")
     private int viewCounts; // 조회수
 
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     private LocalDateTime regDt; // 등록시간
     private LocalDateTime modDt; // 수정시간
 }
