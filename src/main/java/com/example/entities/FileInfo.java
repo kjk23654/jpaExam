@@ -12,7 +12,7 @@ public class FileInfo { // 파일
     @Id @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private BoardData boardData;
     // @JoinColumn을 사용하지 않으면 외래키명은 BOARD_DATA_ID;
 

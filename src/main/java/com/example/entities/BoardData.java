@@ -23,11 +23,12 @@ public class BoardData {
     @Column(columnDefinition = "NUMBER(4) NOT NULL")
     private int viewCounts; // 조회수
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "boardData", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "boardData", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
     private List<FileInfo> fileInfos = new ArrayList<>(); // 부모는 BoardData
 
     private LocalDateTime regDt; // 등록시간

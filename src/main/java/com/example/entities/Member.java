@@ -31,13 +31,13 @@ public class Member { // 엔티티는 기본키가 반드시 있어야함
     @Column(length = 13)
     private String mobile;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     // 연관관계의 주인 = BoardData
     // Member 엔티티가 주인이 아니므로 mappedBy를 사용
     // 속성값이 member인 이유는 BoardData의 Member에 의해 관리되기 때문
     private List<BoardData> boardData = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private MemberProfile memberProfile;
 
 
