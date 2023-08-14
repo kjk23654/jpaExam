@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "board_data")
@@ -24,6 +26,9 @@ public class BoardData {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @OneToMany(mappedBy = "boardData", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FileInfo> fileInfos = new ArrayList<>(); // 부모는 BoardData
 
     private LocalDateTime regDt; // 등록시간
     private LocalDateTime modDt; // 수정시간
