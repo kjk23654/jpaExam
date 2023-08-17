@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Member { // 엔티티는 기본키가 반드시 있어야함
+public class Member extends BaseEntity { // 엔티티는 기본키가 반드시 있어야함
 
     @Id @GeneratedValue
     private Long id; // 회원번호
@@ -40,8 +40,4 @@ public class Member { // 엔티티는 기본키가 반드시 있어야함
     @OneToOne(fetch = FetchType.LAZY)
     private MemberProfile memberProfile;
 
-
-    private LocalDateTime regDt;
-
-    private LocalDateTime modDt;
 }

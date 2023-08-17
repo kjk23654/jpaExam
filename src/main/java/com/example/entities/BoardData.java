@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "board_data")
 @Data
-public class BoardData {
+public class BoardData extends BaseEntity{
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; // 게시글 번호
@@ -30,7 +30,4 @@ public class BoardData {
     @OneToMany(mappedBy = "boardData", cascade = CascadeType.ALL,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<FileInfo> fileInfos = new ArrayList<>(); // 부모는 BoardData
-
-    private LocalDateTime regDt; // 등록시간
-    private LocalDateTime modDt; // 수정시간
 }
